@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "948273971534",
+    "project_id": "taxido-2c6ff",
+    "storage_bucket": "taxido-2c6ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948273971534:android:463aa855552da7eaeade1f",
+        "android_client_info": {
+          "package_name": "com.example.taxido"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948273971534-pesjuhsn5qbk24m6cd4kbhg9dfjc6k2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRUHhkiDgOV0LydIV7aeUoJ5NgF1-E3jE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948273971534-pesjuhsn5qbk24m6cd4kbhg9dfjc6k2k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
