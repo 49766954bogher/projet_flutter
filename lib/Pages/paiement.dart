@@ -11,7 +11,7 @@ class _PaiementPageState extends State<PaiementPage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("Page de paiement"),
+      child: const Text("Page de paiement"),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:taxido/Authrntification/auth.dart';
-import 'package:taxido/EcranPrincipal/main_screen.dart';
+//import 'package:taxido/EcranPrincipal/main_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({Key? key}) : super(key: key);

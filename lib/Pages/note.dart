@@ -11,7 +11,7 @@ class _NotePageState extends State<NotePage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("Page des notes"),
+      child: const Text("Page des notes"),
     );
   }
 }

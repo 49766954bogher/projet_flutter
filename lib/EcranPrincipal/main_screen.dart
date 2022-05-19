@@ -64,7 +64,7 @@ class _MainScreenState extends State<MainScreen>
           selectedItemColor: Colors.white,
           backgroundColor: Colors.black,
           type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: TextStyle(
+          selectedLabelStyle: const TextStyle(
             fontSize: 14,
           ),
           showSelectedLabels: true,

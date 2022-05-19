@@ -18,7 +18,7 @@ void main() async {
       ),
     ),
   );
-  /*
+  /*git
    AnimatedSplashScreen(
           backgroundColor: Colors.black,
           splash: 'images/driver.jpg',
@@ -49,6 +49,8 @@ class _MyAppState extends State<MyApp> {
       key = UniqueKey();
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {

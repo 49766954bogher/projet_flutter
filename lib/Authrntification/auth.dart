@@ -1,4 +1,7 @@
-import 'dart:ffi';
+//import 'dart:ffi';
+//import 'dart:html';
+
+//import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -25,7 +28,7 @@ class _SignUpState extends State<SignUp> {
             height: 80.0,
           ),
           Padding(
-            padding: EdgeInsets.all(6.0),
+            padding: const EdgeInsets.all(6.0),
             child: Image.asset("images/logo1.png"),
             //images/logo1.png
             // Image.network(
@@ -34,12 +37,13 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(
             height: 10.0,
           ),
-          Text(
+          const Text(
             "Le Chauffeur",
             style: TextStyle(
                 fontSize: 20, color: Colors.green, fontWeight: FontWeight.bold),
           ),
           TextField(
+            keyboardType: TextInputType.name,
             controller: name,
             style: const TextStyle(
               color: Colors.grey,
@@ -57,6 +61,7 @@ class _SignUpState extends State<SignUp> {
           ),
           TextField(
             controller: email,
+            keyboardType: TextInputType.emailAddress,
             style: const TextStyle(
               color: Colors.grey,
             ),
@@ -72,6 +77,7 @@ class _SignUpState extends State<SignUp> {
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
           TextField(
+            keyboardType: TextInputType.phone,
             controller: phone,
             style: const TextStyle(
               color: Colors.grey,
@@ -88,6 +94,7 @@ class _SignUpState extends State<SignUp> {
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
           TextField(
+            keyboardType: TextInputType.visiblePassword,
             controller: password,
             style: const TextStyle(
               color: Colors.grey,
@@ -103,6 +110,19 @@ class _SignUpState extends State<SignUp> {
                 ),
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              primary: Colors.lightGreenAccent,
+            ),
+            child: const Text(
+              "Enregistrer",
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white54,
+              ),
+            ),
+          )
         ]),
       ),
     );
