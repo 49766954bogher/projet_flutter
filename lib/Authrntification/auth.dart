@@ -4,6 +4,8 @@
 //import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:taxido/Connection/connection.dart';
+import 'package:taxido/DetailsVoiture/delais_voiture.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -40,7 +42,7 @@ class _SignUpState extends State<SignUp> {
           const Text(
             "Le Chauffeur",
             style: TextStyle(
-                fontSize: 20, color: Colors.green, fontWeight: FontWeight.bold),
+                fontSize: 25, color: Colors.grey, fontWeight: FontWeight.bold),
           ),
           TextField(
             keyboardType: TextInputType.name,
@@ -111,7 +113,10 @@ class _SignUpState extends State<SignUp> {
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (c) => DetailsVoiture()));
+            },
             style: ElevatedButton.styleFrom(
               primary: Colors.lightGreenAccent,
             ),
@@ -122,7 +127,18 @@ class _SignUpState extends State<SignUp> {
                 color: Colors.white54,
               ),
             ),
-          )
+          ),
+          TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (c) => Connection()));
+              },
+              child: const Center(
+                child: Text("Avez vous deja une compte, cliquer ici",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    )),
+              )),
         ]),
       ),
     );

@@ -1,7 +1,11 @@
 import 'dart:async';
+//import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:taxido/Authrntification/auth.dart';
+import 'package:taxido/Connection/connection.dart';
+import 'package:taxido/DetailsVoiture/delais_voiture.dart';
+
 //import 'package:taxido/EcranPrincipal/main_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
@@ -15,7 +19,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
   startTimer() {
     Timer(const Duration(seconds: 5), () async {
       //montrer utilisateur la page principale
-      Navigator.push(context, MaterialPageRoute(builder: (c) => SignUp()));
+      Navigator.push(context, MaterialPageRoute(builder: (c) => Connection()));
     });
   }
 
