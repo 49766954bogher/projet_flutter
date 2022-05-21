@@ -27,7 +27,7 @@ class _SignUpState extends State<SignUp> {
       body: SingleChildScrollView(
         child: Column(children: [
           const SizedBox(
-            height: 80.0,
+            height: 25.0,
           ),
           Padding(
             padding: const EdgeInsets.all(6.0),
@@ -37,7 +37,7 @@ class _SignUpState extends State<SignUp> {
             //'https://www.bing.com/images/search?view=detailV2&ccid=zHBySLsk&id=14BB63FA7F30CD29973EC84CA8350266925F0509&thid=OIP.zHBySLsk-x8EDl-UvdIf7QHaGF&mediaurl=https%3A%2F%2Fimage.freepik.com%2Fvecteurs-libre%2Fheureux-personnage-souriant-chauffeur-taxi-invite-voyager-dans-son-illustration-dessin-anime-plat-voiture_133260-2221.jpg&cdnurl=https%3A%2F%2Fth.bing.com%2Fth%2Fid%2FR.cc707248bb24fb1f040e5f94bdd21fed%3Frik%3DCQVfkmYCNahMyA%26pid%3DImgRaw%26r%3D0&exph=515&expw=626&q=Chauffeur+De+Taxi+Dessin&simid=607996983790822871&form=IRPRST&ck=92A094C63E1B4A840AD7C42878A2796A&selectedindex=37&ajaxhist=0&ajaxserp=0&vt=0&sim=11'),
           ),
           const SizedBox(
-            height: 10.0,
+            height: 8,
           ),
           const Text(
             "Le Chauffeur",
@@ -110,7 +110,11 @@ class _SignUpState extends State<SignUp> {
                   color: Colors.grey,
                   fontSize: 16,
                 ),
+
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
+          ),
+          const SizedBox(
+            height: 18.0,
           ),
           ElevatedButton(
             onPressed: () {
@@ -120,21 +124,25 @@ class _SignUpState extends State<SignUp> {
             style: ElevatedButton.styleFrom(
               primary: Colors.lightGreenAccent,
             ),
+
+
+
             child: const Text(
-              "Enregistrer",
+              "Créer une compte",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.white54,
+                color: Colors.black54,
               ),
             ),
           ),
+
           TextButton(
               onPressed: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (c) => Connection()));
               },
               child: const Center(
-                child: Text("Avez vous deja une compte, cliquer ici",
+                child: Text("Avez vous deja une compte, cliquer ici !",
                     style: TextStyle(
                       color: Colors.grey,
                     )),

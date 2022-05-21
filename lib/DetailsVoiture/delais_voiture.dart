@@ -44,7 +44,7 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
           const Text(
             "Les details de la voiture",
             style: TextStyle(
-                fontSize: 20, color: Colors.green, fontWeight: FontWeight.bold),
+                fontSize: 25, color: Colors.grey, fontWeight: FontWeight.bold),
           ),
           TextField(
             keyboardType: TextInputType.name,
@@ -80,22 +80,22 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
           TextField(
-            keyboardType: TextInputType.phone,
-            controller: couleur,
+            controller: matricule,
             style: const TextStyle(
               color: Colors.grey,
             ),
             decoration: const InputDecoration(
-              labelText: "Couleur",
-              hintText: "couleur",
-              enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey)),
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 16,
-              ),
-            ),
+                labelText: "Couleur",
+                hintText: "couleur",
+                enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey)),
+                hintStyle: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16,
+                ),
+                labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
+
           SizedBox(height: 10),
           DropdownButton(
             iconSize: 20,

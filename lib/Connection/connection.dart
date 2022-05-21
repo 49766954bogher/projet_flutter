@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taxido/Authrntification/auth.dart';
+import 'package:taxido/EcranPrincipal/main_screen.dart';
+import 'package:taxido/Pages/accueil.dart';
 
 class Connection extends StatefulWidget {
   const Connection({Key? key}) : super(key: key);
@@ -20,7 +22,7 @@ class _ConnectionState extends State<Connection> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              const SizedBox(height: 18),
+              const SizedBox(height: 40),
               Image.asset("images/logo1.png"),
               const Text(
                 "Connection",
@@ -37,8 +39,8 @@ class _ConnectionState extends State<Connection> {
                   color: Colors.grey,
                 ),
                 decoration: const InputDecoration(
-                    labelText: "Login",
-                    hintText: "login",
+                    labelText: "Nom d'utilisateur",
+                    hintText: "nom d'utilisateur",
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey)),
                     hintStyle: TextStyle(
@@ -57,8 +59,8 @@ class _ConnectionState extends State<Connection> {
                   color: Colors.grey,
                 ),
                 decoration: const InputDecoration(
-                    labelText: "Password",
-                    hintText: "password",
+                    labelText: "Mot de passe ",
+                    hintText: "mot de passe",
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey)),
                     hintStyle: TextStyle(
@@ -68,21 +70,21 @@ class _ConnectionState extends State<Connection> {
                     labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
               ),
               const SizedBox(
-                height: 14.0,
+                height: 18.0,
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //context, MaterialPageRoute(builder: (c) => ()));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (c) => MainScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.lightGreenAccent,
                 ),
                 child: const Text(
-                  "Connection",
+                  "Se connecter",
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.white54,
+                    color: Colors.black54,
                   ),
                 ),
               ),
@@ -92,7 +94,7 @@ class _ConnectionState extends State<Connection> {
                       context, MaterialPageRoute(builder: (c) => SignUp()));
                 },
                 child: const Text(
-                  "Pas de compte, cliquer ici",
+                  "Pas de compte, cliquer ici !",
                   style: TextStyle(color: Colors.grey),
                 ),
               ),

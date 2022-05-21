@@ -25,22 +25,30 @@ class _MainScreenState extends State<MainScreen>
 
   @override
   void initState() {
+
     super.initState();
     tabController = TabController(length: 4, vsync: this);
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
-        body: TabBarView(
+
+        body:  TabBarView(
+
+
           physics: NeverScrollableScrollPhysics(),
           controller: tabController,
           children: const [
+
             HomePage(),
             PaiementPage(),
             NotePage(),
             ProfilePage()
           ],
+
         ),
+
+
         bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
@@ -59,6 +67,7 @@ class _MainScreenState extends State<MainScreen>
               icon: Icon(Icons.person),
               label: 'Profile',
             ),
+
           ],
           unselectedItemColor: Colors.white54,
           selectedItemColor: Colors.white,
@@ -70,6 +79,29 @@ class _MainScreenState extends State<MainScreen>
           showSelectedLabels: true,
           currentIndex: selectedIndex,
           onTap: onSItemclick,
-        ));
+        ),
+
+
+
+    );
+  }
+
+  ElevatedButton SortirApp(){
+    return   ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (c) => MainScreen()));
+      },
+      style: ElevatedButton.styleFrom(
+        primary: Colors.lightGreenAccent,
+      ),
+      child: const Text(
+        "sortir",
+        style: TextStyle(
+          fontSize: 18,
+          color: Colors.white54,
+        ),
+      ),
+    );
   }
 }

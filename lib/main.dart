@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:taxido/Connection/connection.dart';
 import 'package:taxido/EcranDemarage/splash_screen.dart';
 import 'package:taxido/EcranPrincipal/main_screen.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -13,18 +14,17 @@ void main() async {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MySplashScreen(),
+        home: AnimatedSplashScreen(
+          backgroundColor: Colors.black,
+          splash: 'images/driver.jpg',
+          nextScreen: Connection(),
+          splashTransition: SplashTransition.scaleTransition,
+        ),
         debugShowCheckedModeBanner: false,
       ),
     ),
   );
-  /*git
-   AnimatedSplashScreen(
-          backgroundColor: Colors.black,
-          splash: 'images/driver.jpg',
-          nextScreen: MainScreen(),
-          splashTransition: SplashTransition.scaleTransition,
-        ),*/
+
 }
 
 // Using last version avec nulSafety

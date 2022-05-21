@@ -17,7 +17,7 @@ class MySplashScreen extends StatefulWidget {
 
 class _MySplashScreenState extends State<MySplashScreen> {
   startTimer() {
-    Timer(const Duration(seconds: 5), () async {
+    Timer(const Duration(seconds: 3), () async {
       //montrer utilisateur la page principale
       Navigator.push(context, MaterialPageRoute(builder: (c) => Connection()));
     });
