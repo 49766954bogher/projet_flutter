@@ -10,8 +10,20 @@ class PaiementPage extends StatefulWidget {
 class _PaiementPageState extends State<PaiementPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: const Text("Page de paiement"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Paiement de chauffeur",
+          style: TextStyle(
+              fontSize: 12
+          ),
+        ),
+        backgroundColor: Colors.black54,
+
+      ),
+      body:const Center(
+        child:  Text("Page des paiements"),
+      ),
     );
   }
 }

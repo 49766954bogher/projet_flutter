@@ -10,8 +10,23 @@ class NotePage extends StatefulWidget {
 class _NotePageState extends State<NotePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: const Text("Page des notes"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Noter votre voyage",
+          style: TextStyle(
+            fontSize: 12
+          ),
+        ),
+        backgroundColor: Colors.black54,
+
+      ),
+      body:const Center(
+        child:  Text("Noter votre dernier voyage"),
+      ),
     );
+
+
+
   }
 }

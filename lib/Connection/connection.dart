@@ -1,6 +1,9 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:taxido/Authrntification/auth.dart';
 import 'package:taxido/EcranPrincipal/main_screen.dart';
+
 import 'package:taxido/Pages/accueil.dart';
 
 class Connection extends StatefulWidget {
@@ -74,8 +77,8 @@ class _ConnectionState extends State<Connection> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (c) => MainScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (c) => const MainScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.lightGreenAccent,

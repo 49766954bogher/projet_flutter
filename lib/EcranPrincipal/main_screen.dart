@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxido/Authrntification/auth.dart';
 import 'package:taxido/Pages/accueil.dart';
 import 'package:taxido/Pages/note.dart';
 import 'package:taxido/Pages/paiement.dart';
@@ -25,72 +26,55 @@ class _MainScreenState extends State<MainScreen>
 
   @override
   void initState() {
-
     super.initState();
     tabController = TabController(length: 4, vsync: this);
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        body:  TabBarView(
-
-
-          physics: NeverScrollableScrollPhysics(),
-          controller: tabController,
-          children: const [
-
-            HomePage(),
-            PaiementPage(),
-            NotePage(),
-            ProfilePage()
-          ],
-
-        ),
-
-
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Accueil',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.credit_card),
-              label: 'Paiement',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.star),
-              label: 'Note',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-
-          ],
-          unselectedItemColor: Colors.white54,
-          selectedItemColor: Colors.white,
-          backgroundColor: Colors.black,
-          type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: const TextStyle(
-            fontSize: 14,
+      body: TabBarView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: tabController,
+        children: const [HomePage(), PaiementPage(), NotePage(), ProfilePage()],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Accueil',
           ),
-          showSelectedLabels: true,
-          currentIndex: selectedIndex,
-          onTap: onSItemclick,
+          BottomNavigationBarItem(
+            icon: Icon(Icons.credit_card),
+            label: 'Paiement',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Note',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        unselectedItemColor: Colors.white54,
+        selectedItemColor: Colors.white,
+        backgroundColor: Colors.black,
+        type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: const TextStyle(
+          fontSize: 14,
         ),
-
-
-
+        showSelectedLabels: true,
+        currentIndex: selectedIndex,
+        onTap: onSItemclick,
+      ),
     );
   }
 
-  ElevatedButton SortirApp(){
-    return   ElevatedButton(
+  ElevatedButton sortirApp() {
+    return ElevatedButton(
       onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (c) => MainScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (c) => SignUp()));
       },
       style: ElevatedButton.styleFrom(
         primary: Colors.lightGreenAccent,

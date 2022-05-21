@@ -1,15 +1,9 @@
-//import 'dart:ffi';
-//import 'dart:html';
-
-//import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:taxido/Connection/connection.dart';
 import 'package:taxido/DetailsVoiture/delais_voiture.dart';
 
+// ignore: use_key_in_widget_constructors
 class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
-
   @override
   State<SignUp> createState() => _SignUpState();
 }
@@ -35,9 +29,6 @@ class _SignUpState extends State<SignUp> {
             //images/logo1.png
             // Image.network(
             //'https://www.bing.com/images/search?view=detailV2&ccid=zHBySLsk&id=14BB63FA7F30CD29973EC84CA8350266925F0509&thid=OIP.zHBySLsk-x8EDl-UvdIf7QHaGF&mediaurl=https%3A%2F%2Fimage.freepik.com%2Fvecteurs-libre%2Fheureux-personnage-souriant-chauffeur-taxi-invite-voyager-dans-son-illustration-dessin-anime-plat-voiture_133260-2221.jpg&cdnurl=https%3A%2F%2Fth.bing.com%2Fth%2Fid%2FR.cc707248bb24fb1f040e5f94bdd21fed%3Frik%3DCQVfkmYCNahMyA%26pid%3DImgRaw%26r%3D0&exph=515&expw=626&q=Chauffeur+De+Taxi+Dessin&simid=607996983790822871&form=IRPRST&ck=92A094C63E1B4A840AD7C42878A2796A&selectedindex=37&ajaxhist=0&ajaxserp=0&vt=0&sim=11'),
-          ),
-          const SizedBox(
-            height: 8,
           ),
           const Text(
             "Le Chauffeur",
@@ -110,7 +101,6 @@ class _SignUpState extends State<SignUp> {
                   color: Colors.grey,
                   fontSize: 16,
                 ),
-
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
           const SizedBox(
@@ -118,15 +108,12 @@ class _SignUpState extends State<SignUp> {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (c) => DetailsVoiture()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (c) => const DetailsVoiture()));
             },
             style: ElevatedButton.styleFrom(
               primary: Colors.lightGreenAccent,
             ),
-
-
-
             child: const Text(
               "Créer une compte",
               style: TextStyle(
@@ -135,11 +122,10 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
           ),
-
           TextButton(
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (c) => Connection()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (c) => const Connection()));
               },
               child: const Center(
                 child: Text("Avez vous deja une compte, cliquer ici !",

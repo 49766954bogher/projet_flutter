@@ -1,8 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+//import 'package:flutter/src/foundation/key.dart';
+//import 'package:flutter/src/widgets/framework.dart';
 
 class DetailsVoiture extends StatefulWidget {
   const DetailsVoiture({Key? key}) : super(key: key);
@@ -16,6 +14,7 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
   TextEditingController matricule = TextEditingController();
   TextEditingController couleur = TextEditingController();
 
+  // ignore: non_constant_identifier_names
   List DesTypeVoitures = [
     "toyata",
     "peugeot",
@@ -95,8 +94,7 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
                 ),
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
-
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           DropdownButton(
             iconSize: 20,
             dropdownColor: Colors.black26,
@@ -109,8 +107,9 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
             ),
             value: onSelectedTypeVoiture,
             onChanged: (noewvalue) {
-              void InitSet(noewvalue) {
-                onSelectedTypeVoiture = noewvalue;
+              // ignore: unused_element
+              void initSet(newvalue) {
+                onSelectedTypeVoiture = newvalue;
               }
             },
             items: DesTypeVoitures.map((voitures) {
