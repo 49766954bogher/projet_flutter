@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:taxido/Connection/connection.dart';
 import 'package:taxido/PageChauffeur/chauffeur.dart';
 import 'package:taxido/Pages/lire_nous.dart';
+import 'package:taxido/Pages/note.dart';
+import 'package:taxido/Pages/paiement.dart';
+import 'package:taxido/Pages/profile.dart';
 import 'package:taxido/Pages/reglage.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,7 +53,6 @@ class NavigationDrawer extends StatelessWidget {
   }
 
   Widget buildMenuItems(BuildContext context) => Container(
-        color: Colors.black54,
         padding: const EdgeInsets.all(24),
         child: Wrap(
           runSpacing: 16,
@@ -62,6 +64,30 @@ class NavigationDrawer extends StatelessWidget {
                   Navigator.pop(context);
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const HomePage()));
+                }),
+            ListTile(
+                leading: const Icon(Icons.credit_card_outlined),
+                title: const Text("Paiement"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const PaiementPage()));
+                }),
+            ListTile(
+                leading: const Icon(Icons.star),
+                title: const Text("Note"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const NotePage()));
+                }),
+            ListTile(
+                leading: const Icon(Icons.people),
+                title: const Text("Profil"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const ProfilePage()));
                 }),
             ListTile(
               leading: const Icon(Icons.notification_important),
@@ -94,6 +120,8 @@ class NavigationDrawer extends StatelessWidget {
               },
             ),
             ListTile(
+                leading: const Icon(Icons.help), title: const Text("Aide")),
+            ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text("Deconnecter"),
               onTap: () {
@@ -102,45 +130,40 @@ class NavigationDrawer extends StatelessWidget {
                     builder: (context) => const Connection()));
               },
             ),
-            ListTile(leading: const Icon(Icons.help), title: const Text("Aide"))
           ],
         ),
       );
 
   Widget buildHeader(BuildContext context) => Material(
-        color: Colors.grey.shade700,
+        color: Colors.black45,
         child: InkWell(
           onTap: () {
             Navigator.pop(context);
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => const Pagechauffeur()));
           },
-          child: Column(
-            children: const [
-              CircleAvatar(
-                radius: 52,
-                backgroundImage: AssetImage(
-                  "images/brms.jpg",
+          child: Container(
+            padding: EdgeInsets.only(
+              top: 24 + MediaQuery.of(context).padding.top,
+              bottom: 24,
+              left: 80,
+              right: 80,
+            ),
+            child: Column(
+              children: const [
+                CircleAvatar(
+                  radius: 80,
+                  backgroundImage: AssetImage('images/icons8-driver-64.png'),
+                  backgroundColor: Colors.black45,
                 ),
-              ),
-              SizedBox(height: 12),
-              Text(
-                "Mon chauffeur",
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black54,
-                  fontStyle: FontStyle.italic,
+                SizedBox(height: 12.0),
+                Text(
+                  "Chauffeur",
+                  style: TextStyle(color: Colors.black54),
                 ),
-              ),
-              Text(
-                "www.chauffeur@gmail.com",
-                style: TextStyle(
-                  fontSize: 19,
-                  color: Colors.white,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-            ],
+                Text('brms@gmail.com', style: TextStyle(color: Colors.white)),
+              ],
+            ),
           ),
         ),
       );

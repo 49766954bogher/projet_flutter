@@ -112,10 +112,10 @@ class _SignUpState extends State<SignUp> {
                   MaterialPageRoute(builder: (c) => const DetailsVoiture()));
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.lightGreenAccent,
+              primary: Colors.lightBlueAccent,
             ),
             child: const Text(
-              "Créer une compte",
+              "Ajouter votre voiture",
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.black54,

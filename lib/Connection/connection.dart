@@ -78,7 +78,7 @@ class _ConnectionState extends State<Connection> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (c) => const MainScreen()));
+                      MaterialPageRoute(builder: (c) => const HomePage()));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.lightGreenAccent,

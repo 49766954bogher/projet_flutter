@@ -68,9 +68,10 @@ class _MainScreenState extends State<MainScreen>
         currentIndex: selectedIndex,
         onTap: onSItemclick,
       ),
+
     );
   }
-
+/*
   ElevatedButton sortirApp() {
     return ElevatedButton(
       onPressed: () {
@@ -88,4 +89,6 @@ class _MainScreenState extends State<MainScreen>
       ),
     );
   }
+  */
+
 }

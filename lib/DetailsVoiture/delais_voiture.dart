@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxido/Pages/accueil.dart';
 //import 'package:flutter/src/foundation/key.dart';
 //import 'package:flutter/src/widgets/framework.dart';
 
@@ -125,12 +126,15 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
             }).toList(),
           ),
           ElevatedButton(
-            onPressed: () {},
             style: ElevatedButton.styleFrom(
               primary: Colors.lightGreenAccent,
             ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (c) => const HomePage()));
+            },
             child: const Text(
-              "Enregistrer",
+              "Terminer",
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.white54,
