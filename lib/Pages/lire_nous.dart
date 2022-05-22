@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'accueil.dart';
+
 class AproposDeNous extends StatefulWidget {
   const AproposDeNous({Key? key}) : super(key: key);
 
@@ -16,9 +18,9 @@ class _AproposDeNousState extends State<AproposDeNous> {
       ),
       body: const Center(
         child: Text(
-          " Nous aimons le flutter",
+          " Nous aimons flutter",
           style: TextStyle(
-            fontSize: 40,
+            fontSize: 25,
             color: Colors.black54,
             fontStyle: FontStyle.italic,
           ),

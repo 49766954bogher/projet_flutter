@@ -1,5 +1,8 @@
-// ignore: file_names
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
+
+import 'accueil.dart';
 
 class PageReglage extends StatefulWidget {
   const PageReglage({Key? key}) : super(key: key);
