@@ -81,13 +81,13 @@ class _ConnectionState extends State<Connection> {
                       MaterialPageRoute(builder: (c) => const HomePage()));
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.lightGreenAccent,
+                  primary: Colors.lightBlueAccent,
                 ),
                 child: const Text(
                   "Se connecter",
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.black54,
+                    color: Color.fromARGB(137, 34, 30, 30),
                   ),
                 ),
               ),

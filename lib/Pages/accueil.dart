@@ -119,8 +119,7 @@ class NavigationDrawer extends StatelessWidget {
                     builder: (context) => const AproposDeNous()));
               },
             ),
-            ListTile(
-                leading: const Icon(Icons.help), title: const Text("Aide")),
+            const ListTile(leading: Icon(Icons.help), title: Text("Aide")),
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text("Deconnecter"),

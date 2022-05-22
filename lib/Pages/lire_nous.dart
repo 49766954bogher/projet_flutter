@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'accueil.dart';
-
 class AproposDeNous extends StatefulWidget {
   const AproposDeNous({Key? key}) : super(key: key);
 

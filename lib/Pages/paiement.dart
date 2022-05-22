@@ -14,15 +14,12 @@ class _PaiementPageState extends State<PaiementPage> {
       appBar: AppBar(
         title: const Text(
           "Paiement de chauffeur",
-          style: TextStyle(
-              fontSize: 12
-          ),
+          style: TextStyle(fontSize: 12),
         ),
         backgroundColor: Colors.black54,
-
       ),
-      body:const Center(
-        child:  Text("Page des paiements"),
+      body: const Center(
+        child: Text("Page des paiements"),
       ),
     );
   }

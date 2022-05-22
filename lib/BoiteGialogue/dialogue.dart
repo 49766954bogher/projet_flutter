@@ -21,12 +21,12 @@ class BoiteDeDialogue extends StatelessWidget {
               children: [
                 const SizedBox(width: 26),
                 const CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
                 ),
                 Text(
                   message!,
                   style: const TextStyle(
-                    color: Colors.grey,
+                    color: Colors.black,
                     fontSize: 12,
                   ),
                 ),
@@ -36,19 +36,3 @@ class BoiteDeDialogue extends StatelessWidget {
     );
   }
 }
-/*
-      //Lors de l'épelation
-
-      showDialog (
-       context :context,
-      barrierDismissible:false,
-       builder: (BuildContext c) {
-
-        return BoiteDeDialogue (message:'veuillez patientez...')
-      }
-       );
-
-
- */
-
-

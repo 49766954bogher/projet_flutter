@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:taxido/Authrntification/auth.dart';
 import 'package:taxido/Pages/accueil.dart';
 import 'package:taxido/Pages/note.dart';
 import 'package:taxido/Pages/paiement.dart';
@@ -68,7 +67,6 @@ class _MainScreenState extends State<MainScreen>
         currentIndex: selectedIndex,
         onTap: onSItemclick,
       ),
-
     );
   }
 /*

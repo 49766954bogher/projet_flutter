@@ -1,7 +1,9 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:taxido/Global/global.dart';
 import 'package:taxido/Pages/accueil.dart';
-//import 'package:flutter/src/foundation/key.dart';
-//import 'package:flutter/src/widgets/framework.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DetailsVoiture extends StatefulWidget {
   const DetailsVoiture({Key? key}) : super(key: key);
@@ -23,7 +25,28 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
     "nissan",
     "marcedece"
   ];
+
   String? onSelectedTypeVoiture;
+
+  saveInfosCars() {
+    Map MapsVoiture = {
+      "Model": model.text.trim(),
+      "Matricule": matricule.text.trim(),
+      "Couleur": couleur.text.trim(),
+      "type": onSelectedTypeVoiture,
+    };
+
+    DatabaseReference chauffeurRef =
+        FirebaseDatabase.instance.ref().child("chauffeur");
+
+    chauffeurRef
+        .child(currentUser!.uid)
+        .child("details des voitures")
+        .set(MapsVoiture);
+
+    Fluttertoast.showToast(
+        msg: "les informations de ton voyage sont bien enregister");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,11 +150,17 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Colors.lightGreenAccent,
+              primary: Colors.lightBlueAccent,
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (c) => const HomePage()));
+              if (model.text.isNotEmpty &&
+                  matricule.text.isNotEmpty &&
+                  couleur.text.isNotEmpty &&
+                  onSelectedTypeVoiture != null) {
+                saveInfosCars();
+              }
+              //Navigator.push(
+              //  context, MaterialPageRoute(builder: (c) => const HomePage()));
             },
             child: const Text(
               "Terminer",
