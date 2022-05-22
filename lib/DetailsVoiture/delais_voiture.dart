@@ -1,9 +1,8 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:taxido/Connection/connection.dart';
 import 'package:taxido/Global/global.dart';
-import 'package:taxido/Pages/accueil.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class DetailsVoiture extends StatefulWidget {
   const DetailsVoiture({Key? key}) : super(key: key);
@@ -46,6 +45,9 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
 
     Fluttertoast.showToast(
         msg: "les informations de ton voyage sont bien enregister");
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (c) => const Connection()));
   }
 
   @override
