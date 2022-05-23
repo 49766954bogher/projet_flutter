@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:taxido/Connection/connection.dart';
 import 'package:taxido/DetailsVoiture/delais_voiture.dart';
 import 'package:taxido/Global/global.dart';
 
@@ -22,7 +21,8 @@ class _SignUpState extends State<SignUp> {
 
   validationForm() {
     if (name.text.length < 3) {
-      Fluttertoast.showToast(msg: "le nom doit depasser trois caracteres");
+      Fluttertoast.showToast(
+          msg: "le nom doit avoir au moins trois caracteres");
     } else if (email.text.contains("@")) {
       Fluttertoast.showToast(msg: "email doit contenir un @");
     } else if (phone.text.isEmpty) {
@@ -48,9 +48,12 @@ class _SignUpState extends State<SignUp> {
                 email: email.text.trim(), password: password.text.trim())
             .catchError((msg) {
       Navigator.pop(context);
-      Fluttertoast.showToast(msg: "Error de creation de user" + msg.toString());
+      Fluttertoast.showToast(
+          msg: "Error de creation de compte" + msg.toString());
     }))
         .user;
+    // enregistrer dans firebase apres la creation de chauffeur
+
     if (firebaseUser != null) {
       Map MapsChaufeurs = {
         "ID": firebaseUser.uid,
@@ -70,7 +73,7 @@ class _SignUpState extends State<SignUp> {
       currentUser = firebaseUser;
       Fluttertoast.showToast(msg: "votre compte a été bien creer");
       Navigator.push(
-          context, MaterialPageRoute(builder: (c) => DetailsVoiture()));
+          context, MaterialPageRoute(builder: (c) => const DetailsVoiture()));
     }
   }
 
@@ -157,7 +160,6 @@ class _SignUpState extends State<SignUp> {
             decoration: const InputDecoration(
                 labelText: "Mot de passe",
                 hintText: "mot de passe",
-
                 enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey)),
                 hintStyle: TextStyle(
@@ -172,7 +174,7 @@ class _SignUpState extends State<SignUp> {
           ElevatedButton(
             onPressed: () {
               Navigator.push(context,
-              MaterialPageRoute(builder: (c) => const DetailsVoiture()));
+                  MaterialPageRoute(builder: (c) => const DetailsVoiture()));
             },
             style: ElevatedButton.styleFrom(
               primary: Colors.lightBlueAccent,
@@ -188,8 +190,8 @@ class _SignUpState extends State<SignUp> {
           TextButton(
               onPressed: () {
                 validationForm();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (c) => const Connection()));
+                //Navigator.push(context,
+                // MaterialPageRoute(builder: (c) => const Connection()));
               },
               child: const Center(
                 child: Text("Avez vous deja une compte, cliquer ici !",

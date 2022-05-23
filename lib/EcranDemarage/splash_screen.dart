@@ -6,7 +6,6 @@ import 'package:taxido/Connection/connection.dart';
 // ignore: unused_import
 import 'package:taxido/EcranPrincipal/main_screen.dart';
 import 'package:taxido/Global/global.dart';
-import 'package:taxido/Pages/accueil.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({Key? key}) : super(key: key);
@@ -18,16 +17,14 @@ class MySplashScreen extends StatefulWidget {
 class _MySplashScreenState extends State<MySplashScreen> {
   startTimer() {
     Timer(const Duration(seconds: 3), () async {
-
-      if(await fAuth.currentUser!=null){
-
-        Navigator.push(context,
-            MaterialPageRoute(builder: (c) => const MainScreen()));
+      if (fAuth.currentUser != null) {
+        currentUser = fAuth.currentUser;
+        Navigator.push(
+            context, MaterialPageRoute(builder: (c) => const MainScreen()));
+      } else {
+        Navigator.push(context, MaterialPageRoute(builder: (c) => SignUp()));
       }
-      else{
-        Navigator.push(context,
-            MaterialPageRoute(builder: (c) =>  SignUp()));
-      }
+
       //montrer utilisateur la page principale
       Navigator.push(
           context, MaterialPageRoute(builder: (c) => const Connection()));

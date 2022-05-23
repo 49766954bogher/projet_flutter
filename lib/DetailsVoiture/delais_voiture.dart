@@ -2,6 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:taxido/Connection/connection.dart';
+import 'package:taxido/EcranDemarage/splash_screen.dart';
 import 'package:taxido/Global/global.dart';
 
 class DetailsVoiture extends StatefulWidget {
@@ -25,14 +26,14 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
     "marcedece"
   ];
 
-  String? onSelectedTypeVoiture;
+  String? slectedtypevoiture;
 
   saveInfosCars() {
     Map MapsVoiture = {
-      "Model": model.text.trim(),
-      "Matricule": matricule.text.trim(),
-      "Couleur": couleur.text.trim(),
-      "type": onSelectedTypeVoiture,
+      "model": model.text.trim(),
+      "matricule": matricule.text.trim(),
+      "couleur": couleur.text.trim(),
+      "type": slectedtypevoiture,
     };
 
     DatabaseReference chauffeurRef =
@@ -47,7 +48,7 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
         msg: "les informations de ton voiture sont bien enregister");
 
     Navigator.push(
-        context, MaterialPageRoute(builder: (c) => const Connection()));
+        context, MaterialPageRoute(builder: (c) => const MySplashScreen()));
   }
 
   @override
@@ -89,7 +90,7 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
           TextField(
-            controller: matricule,
+            controller: couleur,
             style: const TextStyle(
               color: Colors.grey,
             ),
@@ -120,7 +121,6 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
                 ),
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
-
           const SizedBox(height: 10),
           DropdownButton(
             iconSize: 20,
@@ -132,11 +132,11 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
                 fontSize: 14.0,
               ),
             ),
-            value: onSelectedTypeVoiture,
+            value: slectedtypevoiture,
             onChanged: (noewvalue) {
               // ignore: unused_element
-              void initSet(newvalue) {
-                onSelectedTypeVoiture = newvalue;
+              void initState(newvalue) {
+                slectedtypevoiture = newvalue;
               }
             },
             items: DesTypeVoitures.map((voitures) {
@@ -144,32 +144,28 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
                 child: Text(
                   voitures,
                   style: const TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white54,
                   ),
                 ),
                 value: voitures,
               );
             }).toList(),
           ),
+          const SizedBox(height: 20),
           ElevatedButton(
-
             onPressed: () {
               if (model.text.isNotEmpty &&
                   matricule.text.isNotEmpty &&
                   couleur.text.isNotEmpty &&
-                  onSelectedTypeVoiture != null) {
+                  slectedtypevoiture != null) {
                 saveInfosCars();
               }
-
-
             },
-
             style: ElevatedButton.styleFrom(
               primary: Colors.lightBlueAccent,
             ),
-
             child: const Text(
-              "Terminer",
+              "Enregistrer",
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.white54,

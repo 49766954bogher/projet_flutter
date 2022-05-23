@@ -1,10 +1,17 @@
 // ignore_for_file: unused_import
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:taxido/Authrntification/auth.dart';
+import 'package:taxido/EcranDemarage/splash_screen.dart';
 import 'package:taxido/EcranPrincipal/main_screen.dart';
 
 import 'package:taxido/Pages/accueil.dart';
+
+import '../BoiteGialogue/dialogue.dart';
+import '../Global/global.dart';
 
 class Connection extends StatefulWidget {
   const Connection({Key? key}) : super(key: key);
@@ -14,16 +21,48 @@ class Connection extends StatefulWidget {
 }
 
 class _ConnectionState extends State<Connection> {
-  TextEditingController login = TextEditingController();
+  TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
-
-  saveConnectionsInfos() {
-
-    Navigator.push(
-        context, MaterialPageRoute(builder: (c) => const HomePage()));
+  validationForm() {
+    if (email.text.contains("@")) {
+      Fluttertoast.showToast(msg: "email doit contenir un @");
+    } else if (password.text.isNotEmpty) {
+      Fluttertoast.showToast(msg: "mot de passe de peut pas etre vide ");
+    }
   }
 
+  sauvegarderInfosConnection() async {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext c) {
+          return BoiteDeDialogue(message: 'veuillez patienter...');
+        });
+
+    final User? firebaseUser = (await fAuth
+            .signInWithEmailAndPassword(
+                email: email.text.trim(), password: password.text.trim())
+            .catchError((msg) {
+      Navigator.pop(context);
+      Fluttertoast.showToast(
+          msg: "Error de creation de compte" + msg.toString());
+    }))
+        .user;
+
+    // enregistrer dans firebase apres la creation de chauffeur
+
+    if (firebaseUser != null) {
+      currentUser = firebaseUser;
+      Fluttertoast.showToast(msg: "Bienvenue ");
+      Navigator.push(
+          context, MaterialPageRoute(builder: (c) => const MySplashScreen()));
+    } else {
+      Navigator.pop(context);
+      Fluttertoast.showToast(
+          msg: "erreur de mot de passe ou nom d'utilisateur ");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +85,7 @@ class _ConnectionState extends State<Connection> {
               ),
               TextField(
                 keyboardType: TextInputType.text,
-                controller: login,
+                controller: password,
                 style: const TextStyle(
                   color: Colors.grey,
                 ),
@@ -69,14 +108,12 @@ class _ConnectionState extends State<Connection> {
                 obscuringCharacter: "*",
                 obscureText: true,
                 controller: password,
-
                 style: const TextStyle(
                   color: Colors.grey,
                 ),
                 decoration: const InputDecoration(
                     labelText: "Mot de passe ",
                     hintText: "mot de passe",
-
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey)),
                     hintStyle: TextStyle(
@@ -90,9 +127,9 @@ class _ConnectionState extends State<Connection> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  saveConnectionsInfos();
+                  sauvegarderInfosConnection();
                   //Navigator.push(context,
-                      //MaterialPageRoute(builder: (c) => const HomePage()));
+                  //MaterialPageRoute(builder: (c) => const HomePage()));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.lightBlueAccent,
