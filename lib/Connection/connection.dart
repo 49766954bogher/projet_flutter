@@ -16,6 +16,15 @@ class Connection extends StatefulWidget {
 class _ConnectionState extends State<Connection> {
   TextEditingController login = TextEditingController();
   TextEditingController password = TextEditingController();
+
+
+  saveConnectionsInfos() {
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (c) => const HomePage()));
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,13 +66,17 @@ class _ConnectionState extends State<Connection> {
               ),
               TextField(
                 keyboardType: TextInputType.visiblePassword,
+                obscuringCharacter: "*",
+                obscureText: true,
                 controller: password,
+
                 style: const TextStyle(
                   color: Colors.grey,
                 ),
                 decoration: const InputDecoration(
                     labelText: "Mot de passe ",
                     hintText: "mot de passe",
+
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey)),
                     hintStyle: TextStyle(
@@ -77,8 +90,9 @@ class _ConnectionState extends State<Connection> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (c) => const HomePage()));
+                  saveConnectionsInfos();
+                  //Navigator.push(context,
+                      //MaterialPageRoute(builder: (c) => const HomePage()));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.lightBlueAccent,

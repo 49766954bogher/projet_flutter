@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:taxido/Connection/connection.dart';
 import 'package:taxido/DetailsVoiture/delais_voiture.dart';
-import 'package:taxido/EcranPrincipal/main_screen.dart';
 import 'package:taxido/Global/global.dart';
 
 import '../BoiteGialogue/dialogue.dart';
@@ -151,12 +149,15 @@ class _SignUpState extends State<SignUp> {
           TextField(
             keyboardType: TextInputType.visiblePassword,
             controller: password,
+            obscureText: true,
+            obscuringCharacter: "*",
             style: const TextStyle(
               color: Colors.grey,
             ),
             decoration: const InputDecoration(
                 labelText: "Mot de passe",
                 hintText: "mot de passe",
+
                 enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey)),
                 hintStyle: TextStyle(
@@ -170,14 +171,14 @@ class _SignUpState extends State<SignUp> {
           ),
           ElevatedButton(
             onPressed: () {
-              //Navigator.push(context,
-              //MaterialPageRoute(builder: (c) => const DetailsVoiture()));
+              Navigator.push(context,
+              MaterialPageRoute(builder: (c) => const DetailsVoiture()));
             },
             style: ElevatedButton.styleFrom(
               primary: Colors.lightBlueAccent,
             ),
             child: const Text(
-              "Ajouter votre voiture",
+              "Creer",
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.black54,

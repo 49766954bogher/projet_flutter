@@ -44,7 +44,7 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
         .set(MapsVoiture);
 
     Fluttertoast.showToast(
-        msg: "les informations de ton voyage sont bien enregister");
+        msg: "les informations de ton voiture sont bien enregister");
 
     Navigator.push(
         context, MaterialPageRoute(builder: (c) => const Connection()));
@@ -94,8 +94,8 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
               color: Colors.grey,
             ),
             decoration: const InputDecoration(
-                labelText: "Matricule",
-                hintText: "matricule",
+                labelText: "Couleur",
+                hintText: "couleur",
                 enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey)),
                 hintStyle: TextStyle(
@@ -110,8 +110,8 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
               color: Colors.grey,
             ),
             decoration: const InputDecoration(
-                labelText: "Couleur",
-                hintText: "couleur",
+                labelText: "Matricule",
+                hintText: "matricule",
                 enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey)),
                 hintStyle: TextStyle(
@@ -120,12 +120,13 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
                 ),
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
+
           const SizedBox(height: 10),
           DropdownButton(
             iconSize: 20,
             dropdownColor: Colors.black26,
             hint: const Text(
-              "Choisir une voiture",
+              "Choisissez votre voiture",
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 14.0,
@@ -151,9 +152,7 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
             }).toList(),
           ),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlueAccent,
-            ),
+
             onPressed: () {
               if (model.text.isNotEmpty &&
                   matricule.text.isNotEmpty &&
@@ -161,9 +160,14 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
                   onSelectedTypeVoiture != null) {
                 saveInfosCars();
               }
-              //Navigator.push(
-              //  context, MaterialPageRoute(builder: (c) => const HomePage()));
+
+
             },
+
+            style: ElevatedButton.styleFrom(
+              primary: Colors.lightBlueAccent,
+            ),
+
             child: const Text(
               "Terminer",
               style: TextStyle(
