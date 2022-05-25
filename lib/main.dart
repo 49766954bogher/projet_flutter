@@ -1,6 +1,7 @@
 //import 'package:firebase_core/firebase_core.dart';
 // ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:taxido/Connection/connection.dart';
@@ -9,6 +10,7 @@ import 'package:taxido/EcranDemarage/splash_screen.dart';
 // ignore: unused_import
 import 'package:taxido/EcranPrincipal/main_screen.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:taxido/Pages/accueil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +25,9 @@ void main() async {
         home: AnimatedSplashScreen(
           backgroundColor: Colors.black,
           splash: 'images/driver.jpg',
-          nextScreen: const Connection(),
+          nextScreen: FirebaseAuth.instance.currentUser == null
+              ? const Connection()
+              : const HomePage(),
           splashTransition: SplashTransition.scaleTransition,
         ),
         debugShowCheckedModeBanner: false,

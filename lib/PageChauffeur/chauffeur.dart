@@ -15,9 +15,11 @@ class _PagechauffeurState extends State<Pagechauffeur> {
         title: const Text("Chauffeur"),
       ),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           children: [
             Image.asset("images/brms.jpg"),
+            const SizedBox(height: 10),
             const Text(
               "Mes informations",
               style: TextStyle(

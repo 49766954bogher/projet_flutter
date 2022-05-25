@@ -38,20 +38,20 @@ class _SignUpState extends State<SignUp> {
   sauvegarderInfosChauffeur() async {
     showDialog(
         context: context,
-        barrierDismissible: false,
+        barrierDismissible: true,
         builder: (BuildContext c) {
           return BoiteDeDialogue(message: 'veuillez patienter...');
         });
 
     final User? firebaseUser = (await fAuth
-            .createUserWithEmailAndPassword(
-                email: email.text.trim(), password: password.text.trim())
-            .catchError((msg) {
+        .createUserWithEmailAndPassword(
+            email: email.text.trim(), password: password.text.trim())
+        .then((value) {
+      return value.user;
+    }).catchError((msg) {
       Navigator.pop(context);
-      Fluttertoast.showToast(
-          msg: "Error de creation de compte" + msg.toString());
-    }))
-        .user;
+      Fluttertoast.showToast(msg: "Error, lors de creation d'une compte");
+    }));
     // enregistrer dans firebase apres la creation de chauffeur
 
     if (firebaseUser != null) {
@@ -66,14 +66,15 @@ class _SignUpState extends State<SignUp> {
       DatabaseReference chauffeurRef =
           FirebaseDatabase.instance.ref().child("chauffeur");
       chauffeurRef.child(firebaseUser.uid).set(MapsChaufeurs);
+      Navigator.pop(context);
+      Fluttertoast.showToast(msg: "votre compte a été bien creer");
+      Navigator.push(
+          context, MaterialPageRoute(builder: (c) => const DetailsVoiture()));
     } else {
       Navigator.pop(context);
       Fluttertoast.showToast(msg: "Utilisateur n'est pas creer encore");
 
       currentUser = firebaseUser;
-      Fluttertoast.showToast(msg: "votre compte a été bien creer");
-      Navigator.push(
-          context, MaterialPageRoute(builder: (c) => const DetailsVoiture()));
     }
   }
 
@@ -173,8 +174,9 @@ class _SignUpState extends State<SignUp> {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (c) => const DetailsVoiture()));
+              sauvegarderInfosChauffeur();
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (c) => const DetailsVoiture()));
             },
             style: ElevatedButton.styleFrom(
               primary: Colors.lightBlueAccent,

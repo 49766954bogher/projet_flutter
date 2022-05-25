@@ -9,6 +9,8 @@ import 'package:taxido/Pages/paiement.dart';
 import 'package:taxido/Pages/profile.dart';
 import 'package:taxido/Pages/reglage.dart';
 
+import '../Global/global.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -123,7 +125,8 @@ class NavigationDrawer extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text("Deconnecter"),
-              onTap: () {
+              onTap: () async {
+                await fAuth.signOut();
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const Connection()));

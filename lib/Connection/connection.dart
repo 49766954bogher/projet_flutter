@@ -26,9 +26,11 @@ class _ConnectionState extends State<Connection> {
 
   validationForm() {
     if (email.text.contains("@")) {
-      Fluttertoast.showToast(msg: "email doit contenir un @");
+      Fluttertoast.showToast(msg: "Email non valid");
     } else if (password.text.isNotEmpty) {
-      Fluttertoast.showToast(msg: "mot de passe de peut pas etre vide ");
+      Fluttertoast.showToast(msg: "Mot de passe non valide ");
+    } else {
+      sauvegarderInfosConnection();
     }
   }
 
@@ -54,9 +56,9 @@ class _ConnectionState extends State<Connection> {
 
     if (firebaseUser != null) {
       currentUser = firebaseUser;
-      Fluttertoast.showToast(msg: "Bienvenue ");
+      Fluttertoast.showToast(msg: "Bienvenue");
       Navigator.push(
-          context, MaterialPageRoute(builder: (c) => const MySplashScreen()));
+          context, MaterialPageRoute(builder: (c) => const HomePage()));
     } else {
       Navigator.pop(context);
       Fluttertoast.showToast(
@@ -85,7 +87,7 @@ class _ConnectionState extends State<Connection> {
               ),
               TextField(
                 keyboardType: TextInputType.text,
-                controller: password,
+                controller: email,
                 style: const TextStyle(
                   color: Colors.grey,
                 ),
@@ -144,6 +146,7 @@ class _ConnectionState extends State<Connection> {
               ),
               TextButton(
                 onPressed: () {
+                  //validationForm();
                   Navigator.push(
                       context, MaterialPageRoute(builder: (c) => SignUp()));
                 },

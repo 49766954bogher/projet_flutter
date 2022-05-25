@@ -1,9 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:taxido/Connection/connection.dart';
 import 'package:taxido/EcranDemarage/splash_screen.dart';
 import 'package:taxido/Global/global.dart';
+import 'package:taxido/Pages/accueil.dart';
 
 class DetailsVoiture extends StatefulWidget {
   const DetailsVoiture({Key? key}) : super(key: key);
@@ -38,9 +39,9 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
 
     DatabaseReference chauffeurRef =
         FirebaseDatabase.instance.ref().child("chauffeur");
-
+    //var currentUser = FirebaseAuth.instance.currentUser;
     chauffeurRef
-        .child(currentUser!.uid)
+        .child(fAuth.currentUser!.uid)
         .child("details des voitures")
         .set(MapsVoiture);
 
@@ -48,7 +49,7 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
         msg: "les informations de ton voiture sont bien enregister");
 
     Navigator.push(
-        context, MaterialPageRoute(builder: (c) => const MySplashScreen()));
+        context, MaterialPageRoute(builder: (c) => const HomePage()));
   }
 
   @override
@@ -121,8 +122,8 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
                 ),
                 labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
           ),
-          const SizedBox(height: 10),
-          DropdownButton(
+          const SizedBox(height: 6),
+          DropdownButton<String>(
             iconSize: 20,
             dropdownColor: Colors.black26,
             hint: const Text(
@@ -135,12 +136,13 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
             value: slectedtypevoiture,
             onChanged: (noewvalue) {
               // ignore: unused_element
-              void initState(newvalue) {
-                slectedtypevoiture = newvalue;
-              }
+
+              setState(() {
+                slectedtypevoiture = noewvalue;
+              });
             },
             items: DesTypeVoitures.map((voitures) {
-              return DropdownMenuItem(
+              return DropdownMenuItem<String>(
                 child: Text(
                   voitures,
                   style: const TextStyle(
@@ -151,7 +153,7 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
               );
             }).toList(),
           ),
-          const SizedBox(height: 20),
+          //const SizedBox(height: 2),
           ElevatedButton(
             onPressed: () {
               if (model.text.isNotEmpty &&
@@ -161,14 +163,12 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
                 saveInfosCars();
               }
             },
-            style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlueAccent,
-            ),
+            style: ElevatedButton.styleFrom(primary: Colors.greenAccent),
             child: const Text(
               "Enregistrer",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.white54,
+                color: Colors.white,
               ),
             ),
           )
