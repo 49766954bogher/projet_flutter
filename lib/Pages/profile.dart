@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:taxido/Connection/connection.dart';
-import 'package:taxido/Global/global.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -13,30 +11,35 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Profil de chauffeur",
-            style: TextStyle(fontSize: 12),
-          ),
-          backgroundColor: Colors.black54,
+      appBar: AppBar(
+        title: const Text(
+          "Profil de chauffeur",
+          style: TextStyle(fontSize: 12),
         ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              //Navigator.push(context,
-              //  MaterialPageRoute(builder: (c) => const Connection()));
-            },
-            style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlueAccent,
-            ),
-            child: const Text(
-              "Quitter",
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.red,
+      ),
+      backgroundColor: Colors.black54,
+      body: SingleChildScrollView(
+          child: Column(
+        children: [
+          Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              Image.asset("images/driver.jpg", height: 200, fit: BoxFit.cover),
+              const Padding(
+                padding: EdgeInsets.only(top: 130),
+                child: CircleAvatar(
+                  radius: 75,
+                  backgroundColor: Colors.white,
+                  child: CircleAvatar(
+                    radius: 70,
+                    backgroundImage: AssetImage("images/brms.jpg"),
+                  ),
+                ),
               ),
-            ),
-          ),
-        ));
+            ],
+          )
+        ],
+      )),
+    );
   }
 }
