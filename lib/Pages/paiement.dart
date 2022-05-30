@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxido/Pages/accueil.dart';
 
 class PaiementPage extends StatefulWidget {
   const PaiementPage({Key? key}) : super(key: key);
@@ -17,6 +18,17 @@ class _PaiementPageState extends State<PaiementPage> {
           style: TextStyle(fontSize: 12),
         ),
         backgroundColor: Colors.black54,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => const HomePage()));
+
+          },
+        ),
       ),
       body: const Center(
         child: Text("Page des paiements"),

@@ -25,7 +25,6 @@ class _MySplashScreenState extends State<MySplashScreen> {
         Navigator.push(context, MaterialPageRoute(builder: (c) => SignUp()));
       }
 
-      //montrer utilisateur la page principale
       Navigator.push(
           context, MaterialPageRoute(builder: (c) => const Connection()));
     });

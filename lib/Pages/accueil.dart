@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:taxido/Connection/connection.dart';
-import 'package:taxido/PageChauffeur/chauffeur.dart';
 import 'package:taxido/Pages/lire_nous.dart';
 import 'package:taxido/Pages/note.dart';
 import 'package:taxido/Pages/paiement.dart';
@@ -11,6 +10,7 @@ import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../Global/global.dart';
+import 'history.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -103,6 +103,16 @@ class NavigationDrawer extends StatelessWidget {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const NotePage()));
                 }),
+
+            ListTile(
+              leading: const Icon(Icons.history_toggle_off_rounded),
+              title: const Text("Historique"),
+              onTap: () {
+                //Navigator.pop(context);
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const HistoryPage()));
+              },
+            ),
             ListTile(
                 leading: const Icon(Icons.people),
                 title: const Text("Profil"),
@@ -111,14 +121,6 @@ class NavigationDrawer extends StatelessWidget {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const ProfilePage()));
                 }),
-            ListTile(
-              leading: const Icon(Icons.notification_important),
-              title: const Text("Notification"),
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 8,
-            ),
             const Divider(
               color: Colors.black54,
               thickness: 1.0,
@@ -141,7 +143,7 @@ class NavigationDrawer extends StatelessWidget {
                     builder: (context) => const AproposDeNous()));
               },
             ),
-            const ListTile(leading: Icon(Icons.help), title: Text("Aide")),
+
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text("Deconnecter"),
@@ -162,7 +164,7 @@ class NavigationDrawer extends StatelessWidget {
           onTap: () {
             //Navigator.pop(context);
             Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => const Pagechauffeur()));
+                MaterialPageRoute(builder: (context) => const ProfilePage()));
           },
           child: Container(
             padding: EdgeInsets.only(

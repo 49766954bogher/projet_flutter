@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxido/Pages/accueil.dart';
 
 class AproposDeNous extends StatefulWidget {
   const AproposDeNous({Key? key}) : super(key: key);
@@ -13,6 +14,17 @@ class _AproposDeNousState extends State<AproposDeNous> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("A propos de nous "),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => const HomePage()));
+
+          },
+        ),
       ),
       body: const Center(
         child: Text(

@@ -3,6 +3,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:taxido/DetailsVoiture/delais_voiture.dart';
+import 'package:taxido/Connection/connection.dart';
+
 import 'package:taxido/Global/global.dart';
 
 import '../BoiteGialogue/dialogue.dart';
@@ -50,11 +52,12 @@ class _SignUpState extends State<SignUp> {
       return value.user;
     }).catchError((msg) {
       Navigator.pop(context);
-      Fluttertoast.showToast(msg: "Error, lors de creation d'une compte");
+      Fluttertoast.showToast(msg: "Error, lors de creation d'un compte");
     }));
     // enregistrer dans firebase apres la creation de chauffeur
 
     if (firebaseUser != null) {
+      // ignore: non_constant_identifier_names
       Map MapsChaufeurs = {
         "ID": firebaseUser.uid,
         "name": name.text.trim(),
@@ -72,7 +75,7 @@ class _SignUpState extends State<SignUp> {
           context, MaterialPageRoute(builder: (c) => const DetailsVoiture()));
     } else {
       Navigator.pop(context);
-      Fluttertoast.showToast(msg: "Utilisateur n'est pas creer encore");
+      Fluttertoast.showToast(msg: "Veuilez crée une compte");
 
       currentUser = firebaseUser;
     }
@@ -192,8 +195,8 @@ class _SignUpState extends State<SignUp> {
           TextButton(
               onPressed: () {
                 validationForm();
-                //Navigator.push(context,
-                // MaterialPageRoute(builder: (c) => const Connection()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (c) => const Connection()));
               },
               child: const Center(
                 child: Text("Avez vous deja une compte, cliquer ici !",

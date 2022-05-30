@@ -28,6 +28,7 @@ class _DetailsVoitureState extends State<DetailsVoiture> {
   String? slectedtypevoiture;
 
   saveInfosCars() {
+    // ignore: non_constant_identifier_names
     Map MapsVoiture = {
       "model": model.text.trim(),
       "matricule": matricule.text.trim(),

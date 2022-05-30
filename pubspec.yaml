@@ -43,6 +43,7 @@ dependencies:
   fluttertoast: ^8.0.9
   cloud_firestore: ^3.1.15
   google_maps_flutter: ^2.1.6
+  cloud_firestore: ^3.1.17
 
 
   google_maps: ^6.1.0
@@ -78,6 +79,7 @@ flutter:
     - images/logo1.png
     - images/brms.jpg
     - images/icons8-driver-64.png
+    - images/taxido.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
