@@ -1,4 +1,7 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:taxido/Connection/connection.dart';
 import 'package:taxido/Pages/lire_nous.dart';
 import 'package:taxido/Pages/note.dart';
@@ -20,14 +23,38 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  TextEditingController depart = TextEditingController();
+  TextEditingController destination = TextEditingController();
+  // LatLng _lastPosition = _inialPosition;
+
+  //static const _inialPosition = LatLng(18.0735411, -15.9582337);
+
   final Completer<GoogleMapController> _controllerGoogleMaps = Completer();
   GoogleMapController? controllerChauffeur;
+  GlobalKey<ScaffoldState> scafoldkey = GlobalKey<ScaffoldState>();
+  Position? currentPosition;
+  var geolocalor = Geolocator();
+
+  void getPositionLocation() async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    currentPosition = position;
+    LatLng latLatPosition = LatLng(position.latitude, position.longitude);
+
+    CameraPosition cameraPosition =
+        CameraPosition(target: latLatPosition, zoom: 14);
+    controllerChauffeur!
+        .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+  }
+
+  var Mymarkers = HashSet<Marker>();
 
   static const CameraPosition _kGooglePlex = CameraPosition(
-    //target: LatLng(37.42796133580664, -122.085749655962),
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
+    target: LatLng(18.0735411, -15.9582337),
+    zoom: 15.0,
   );
+
+  //target: LatLng(37.42796133580664, -122.085749655962),
 
   @override
   Widget build(BuildContext context) {
@@ -40,21 +67,149 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.black54,
       ),
       body: Stack(
-        children: [
+        children: <Widget>[
           GoogleMap(
             mapType: MapType.normal,
+            compassEnabled: true,
+            myLocationButtonEnabled: true,
+            zoomControlsEnabled: true,
+            zoomGesturesEnabled: true,
+            //onCameraMove: _onCameraMove,
             myLocationEnabled: true,
-            initialCameraPosition: _kGooglePlex,
             onMapCreated: (GoogleMapController controller) {
               _controllerGoogleMaps.complete(controller);
               controllerChauffeur = controller;
+              setState(() {
+                Mymarkers.add(Marker(
+                  markerId: const MarkerId("1"),
+                  icon: BitmapDescriptor.defaultMarkerWithHue(
+                    BitmapDescriptor.hueGreen,
+                  ),
+                  position: const LatLng(18.0735411, -15.9582337),
+                ));
+              });
+
+              getPositionLocation();
             },
+            initialCameraPosition: _kGooglePlex,
+            markers: Mymarkers,
           ),
+
+          /*
+          Positioned(
+            top: 50.0,
+            right: 15.0,
+            left: 15.0,
+            child: Container(
+              height: 50.0,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3.0),
+                color: Colors.white,
+                boxShadow: const [
+                  BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(1.0, 5.0),
+                      blurRadius: 10,
+                      spreadRadius: 3)
+                ],
+              ),
+              child: TextField(
+                keyboardType: TextInputType.name,
+                controller: depart,
+
+                cursorColor: Colors.black,
+                //controller: appState.locationController,
+                decoration: InputDecoration(
+                  icon: Container(
+                    margin: const EdgeInsets.only(left: 20, top: 5),
+                    width: 10,
+                    height: 10,
+                    child: const Icon(
+                      Icons.location_on,
+                      color: Colors.black,
+                    ),
+                  ),
+                  hintText: "Depart",
+                  border: InputBorder.none,
+                  contentPadding: const EdgeInsets.only(left: 15.0, top: 16.0),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 105.0,
+            right: 15.0,
+            left: 15.0,
+            child: Container(
+
+              height: 50.0,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3.0),
+                color: Colors.white,
+                boxShadow: const [
+                  BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(1.0, 5.0),
+                      blurRadius: 10,
+                      spreadRadius: 3)
+                ],
+              ),
+              child: TextField(
+                keyboardType: TextInputType.name,
+                controller: destination,
+                cursorColor: Colors.black,
+                //controller: appState.destinationController,
+                textInputAction: TextInputAction.go,
+                onSubmitted: (value) {
+                  // appState.sendRequest(value);
+                },
+                decoration: InputDecoration(
+                  icon: Container(
+                    margin: const EdgeInsets.only(left: 20, top: 5),
+                    width: 10,
+                    height: 10,
+                    child: const Icon(
+                      Icons.local_taxi,
+                      color: Colors.black,
+                    ),
+                  ),
+                  hintText: "Destination",
+                  border: InputBorder.none,
+                  contentPadding: const EdgeInsets.only(left: 15.0, top: 16.0),
+                ),
+              ),
+            ),
+          ),
+          */
+          /*ajouter une marque dqns lq carte
+          Positioned(
+            top: 40,
+            right: 10,
+            child: FloatingActionButton(
+              onPressed: _onMarkPressed,
+              tooltip: "Ajoutez votre marque preferer",
+              backgroundColor: Colors.black54,
+              child: const Icon(
+                Icons.add_location,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          */
         ],
       ),
       drawer: const NavigationDrawer(),
     );
   }
+
+  // void _onCameraMove(CameraPosition position) {
+  // setState(() {
+  // _lastPosition = position.target;
+  // });
+  //}
+
 }
 
 class NavigationDrawer extends StatelessWidget {
@@ -103,7 +258,6 @@ class NavigationDrawer extends StatelessWidget {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const NotePage()));
                 }),
-
             ListTile(
               leading: const Icon(Icons.history_toggle_off_rounded),
               title: const Text("Historique"),
@@ -143,7 +297,6 @@ class NavigationDrawer extends StatelessWidget {
                     builder: (context) => const AproposDeNous()));
               },
             ),
-
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text("Deconnecter"),

@@ -11,6 +11,7 @@ import 'package:taxido/Pages/accueil.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(
     MyApp(
       child: MaterialApp(

@@ -1,7 +1,6 @@
 // ignore_for_file: file_names
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:taxido/Connection/connection.dart';
 import 'package:taxido/Pages/accueil.dart';
 
 class PageReglage extends StatefulWidget {
@@ -30,9 +29,7 @@ class _PageReglageState extends State<PageReglage> {
           ),
         ),
       ),
-      body:
-
-      Container(
+      body: Container(
         padding: const EdgeInsets.only(left: 16, top: 25, right: 16),
         child: ListView(
           children: [
@@ -102,8 +99,6 @@ class _PageReglageState extends State<PageReglage> {
             ),
             Center(
               child: ElevatedButton(
-
-
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) => const HomePage()));
@@ -125,10 +120,8 @@ class _PageReglageState extends State<PageReglage> {
       children: [
         Text(
           title,
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: Colors.black54),
+          style: const TextStyle(
+              fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black54),
         ),
         Transform.scale(
             scale: 0.7,

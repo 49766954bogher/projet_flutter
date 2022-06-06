@@ -14,7 +14,7 @@ class _PaiementPageState extends State<PaiementPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Paiement de chauffeur",
+          "Total des paiement",
           style: TextStyle(fontSize: 12),
         ),
         backgroundColor: Colors.black54,
@@ -26,12 +26,11 @@ class _PaiementPageState extends State<PaiementPage> {
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (BuildContext context) => const HomePage()));
-
           },
         ),
       ),
       body: const Center(
-        child: Text("Page des paiements"),
+        child: Text("nombre des voyages "),
       ),
     );
   }

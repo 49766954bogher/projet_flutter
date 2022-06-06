@@ -8,7 +8,7 @@ class BoiteDeDialogue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: Colors.black54,
+      backgroundColor: Colors.white,
       child: Container(
         margin: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
@@ -21,7 +21,7 @@ class BoiteDeDialogue extends StatelessWidget {
               children: [
                 const SizedBox(width: 26),
                 const CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow),
                 ),
                 Text(
                   message!,

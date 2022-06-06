@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxido/Pages/note.dart';
 
 import 'accueil.dart';
 
@@ -13,7 +14,6 @@ class HistoryPage extends StatelessWidget {
           "Historiqu des voyages ",
           style: TextStyle(fontSize: 12),
         ),
-        backgroundColor: Colors.black54,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -24,10 +24,22 @@ class HistoryPage extends StatelessWidget {
                 builder: (BuildContext context) => const HomePage()));
           },
         ),
+        actions: [
+          OutlinedButton.icon(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => const NotePage()));
+            },
+            label: const Text(""),
+            icon: const Icon(
+              Icons.star_outline_sharp,
+              color: Colors.white,
+            ),
+          ),
+        ],
+        backgroundColor: Colors.black54,
       ),
-      body: Container(
-
-      ),
+      body: Container(),
     );
   }
 }

@@ -26,9 +26,9 @@ class _ConnectionState extends State<Connection> {
 
   validationForm() {
     if (email.text.contains("@")) {
-      Fluttertoast.showToast(msg: "Email non valid");
+      Fluttertoast.showToast(msg: "Email est valid");
     } else if (password.text.isNotEmpty) {
-      Fluttertoast.showToast(msg: "Mot de passe non valide ");
+      Fluttertoast.showToast(msg: "Mot de passe est valide ");
     } else {
       sauvegarderInfosConnection();
     }
@@ -47,8 +47,7 @@ class _ConnectionState extends State<Connection> {
                 email: email.text.trim(), password: password.text.trim())
             .catchError((msg) {
       Navigator.pop(context);
-      Fluttertoast.showToast(
-          msg: "Error de creation de compte" + msg.toString());
+      Fluttertoast.showToast(msg: "Error de creation de compte");
     }))
         .user;
 
@@ -69,90 +68,112 @@ class _ConnectionState extends State<Connection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(2),
           child: Column(
             children: [
-              const SizedBox(height: 40),
-              Image.asset("images/logo1.png"),
+              const Image(
+                  image: AssetImage("images/logo.png"),
+                  height: 300,
+                  width: 250,
+                  alignment: Alignment.center),
+              const SizedBox(height: 1.0),
               const Text(
-                "Connection",
+                "Se connecter",
                 style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 0,
                     color: Colors.black,
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.bold),
               ),
-              TextField(
-                keyboardType: TextInputType.text,
-                controller: email,
-                style: const TextStyle(
-                  color: Colors.grey,
-                ),
-                decoration: const InputDecoration(
-                    labelText: "Nom d'utilisateur",
-                    hintText: "nom d'utilisateur",
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey)),
-                    hintStyle: TextStyle(
+              Padding(
+                padding: EdgeInsets.all(14.0),
+                child: Column(children: [
+                  TextField(
+                    keyboardType: TextInputType.text,
+                    controller: email,
+                    style: const TextStyle(
                       color: Colors.grey,
-                      fontSize: 16,
                     ),
-                    labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
-              ),
-              const SizedBox(
-                height: 12.0,
-              ),
-              TextField(
-                keyboardType: TextInputType.visiblePassword,
-                obscuringCharacter: "*",
-                obscureText: true,
-                controller: password,
-                style: const TextStyle(
-                  color: Colors.grey,
-                ),
-                decoration: const InputDecoration(
-                    labelText: "Mot de passe ",
-                    hintText: "mot de passe",
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey)),
-                    hintStyle: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                    ),
-                    labelStyle: TextStyle(color: Colors.grey, fontSize: 18)),
-              ),
-              const SizedBox(
-                height: 18.0,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  sauvegarderInfosConnection();
-                  //Navigator.push(context,
-                  //MaterialPageRoute(builder: (c) => const HomePage()));
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlueAccent,
-                ),
-                child: const Text(
-                  "Se connecter",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Color.fromARGB(137, 34, 30, 30),
+                    decoration: const InputDecoration(
+                        labelText: "Email utilisateur",
+                        hintText: "email utilisateur",
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)),
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                        ),
+                        labelStyle:
+                            TextStyle(color: Colors.grey, fontSize: 18)),
                   ),
-                ),
+                  const SizedBox(
+                    height: 12.0,
+                  ),
+                  TextField(
+                    keyboardType: TextInputType.visiblePassword,
+                    obscuringCharacter: "*",
+                    obscureText: true,
+                    controller: password,
+                    style: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                    decoration: const InputDecoration(
+                        labelText: "Mot de passe ",
+                        hintText: "mot de passe",
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)),
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                        ),
+                        labelStyle:
+                            TextStyle(color: Colors.grey, fontSize: 18)),
+                  ),
+                  const SizedBox(
+                    height: 18.0,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      validationForm();
+                      sauvegarderInfosConnection();
+                      //Navigator.push(context,
+                      //MaterialPageRoute(builder: (c) => const HomePage()));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.yellow,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24.0),
+                      ),
+                    ),
+                    child: Container(
+                      height: 50.0,
+                      child: const Center(
+                        child: Text(
+                          "Se connecter",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: "",
+                            color: Colors.black54,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
               ),
               TextButton(
                 onPressed: () {
-                  //validationForm();
                   Navigator.push(
                       context, MaterialPageRoute(builder: (c) => SignUp()));
                 },
-                child: const Text(
-                  "Pas de compte, cliquer ici !",
-                  style: TextStyle(color: Colors.grey),
+                child: const Center(
+                  child: Text("pas de compte, cliquez ici !",
+                      style: TextStyle(
+                        color: Colors.grey,
+                      )),
                 ),
               ),
             ],
