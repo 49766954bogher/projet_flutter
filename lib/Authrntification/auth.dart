@@ -181,6 +181,7 @@ class _SignUpState extends State<SignUp> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24.0),
                 ),
+                 ),
                 child: Container(
                   height: 50.0,
                   child: const Center(
@@ -194,9 +195,12 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
+
+
               ),
             ]),
           ),
+
           TextButton(
               onPressed: () {
                 Navigator.push(context,
