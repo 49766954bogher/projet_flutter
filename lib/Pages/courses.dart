@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'infoscourses.dart';
 
 class _MoncourseState extends State<Moncourse> {
-
-
-
   List<ListePassagers> passagers = [
     const ListePassagers(
         //ibrhima
@@ -57,12 +54,14 @@ class _MoncourseState extends State<Moncourse> {
           final client = passagers[index];
 
           return Card(
-            margin:const EdgeInsets.all(8.0),
-           // padding:const EdgeInsets.all(5.0),
+            margin: const EdgeInsets.all(8.0),
+            // padding:const EdgeInsets.all(5.0),
             elevation: 4.0,
             child: ListTile(
               leading: CircleAvatar(
-                child: Text(client.nom[0],style:const TextStyle(fontSize: 20,color:Colors.black54)),
+                child: Text(client.nom[0],
+                    style:
+                        const TextStyle(fontSize: 20, color: Colors.black54)),
                 radius: 18,
               ),
               title: Text(client.nom),
@@ -73,7 +72,6 @@ class _MoncourseState extends State<Moncourse> {
                     builder: (context) => infosClient(client: client)));
               },
             ),
-
           );
         }),
       ),
@@ -82,15 +80,13 @@ class _MoncourseState extends State<Moncourse> {
 }
 
 class ListePassagers {
-
   final String nom;
   final String email;
   final String destination;
   final String depart;
 
   const ListePassagers(
-      {
-      required this.nom,
+      {required this.nom,
       required this.email,
       required this.destination,
       required this.depart});

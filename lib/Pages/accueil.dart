@@ -3,7 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:taxido/Connection/connection.dart';
-import 'package:taxido/Pages/lire_nous.dart';
+import 'package:taxido/Pages/courses.dart';
 import 'package:taxido/Pages/note.dart';
 import 'package:taxido/Pages/paiement.dart';
 import 'package:taxido/Pages/profile.dart';
@@ -23,8 +23,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController depart = TextEditingController();
-  TextEditingController destination = TextEditingController();
+  // TextEditingController depart = TextEditingController();
+  //TextEditingController destination = TextEditingController();
   // LatLng _lastPosition = _inialPosition;
 
   //static const _inialPosition = LatLng(18.0735411, -15.9582337);
@@ -59,13 +59,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Accueil",
-          style: TextStyle(fontSize: 12),
-        ),
-        backgroundColor: Colors.black54,
-      ),
+      key: scafoldkey,
       body: Stack(
         children: <Widget>[
           GoogleMap(
@@ -88,11 +82,39 @@ class _HomePageState extends State<HomePage> {
                   position: const LatLng(18.0735411, -15.9582337),
                 ));
               });
-
-              getPositionLocation();
             },
             initialCameraPosition: _kGooglePlex,
             markers: Mymarkers,
+          ),
+          Positioned(
+            top: 35,
+            left: 20,
+            child: FloatingActionButton(
+              onPressed: () {
+                scafoldkey.currentState?.openDrawer();
+              },
+              tooltip: "Menu",
+              backgroundColor: Colors.white,
+              child: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 95,
+            left: 20,
+            child: FloatingActionButton(
+              onPressed: () {
+                getPositionLocation();
+              },
+              tooltip: "Location",
+              backgroundColor: Colors.white,
+              child: const Icon(
+                Icons.location_on_outlined,
+                color: Colors.black,
+              ),
+            ),
           ),
 
           /*
@@ -230,6 +252,7 @@ class NavigationDrawer extends StatelessWidget {
   }
 
   Widget buildMenuItems(BuildContext context) => Container(
+        color: Colors.white,
         padding: const EdgeInsets.all(24),
         child: Wrap(
           runSpacing: 16,
@@ -254,22 +277,21 @@ class NavigationDrawer extends StatelessWidget {
                 leading: const Icon(Icons.star),
                 title: const Text("Note"),
                 onTap: () {
-                  //Navigator.pop(context);
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const NotePage()));
                 }),
             ListTile(
-              leading: const Icon(Icons.history_toggle_off_rounded),
-              title: const Text("Historique"),
+              leading: const Icon(Icons.settings),
+              title: const Text("Mes courses "),
               onTap: () {
                 //Navigator.pop(context);
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const HistoryPage()));
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const Moncourse()));
               },
             ),
             ListTile(
-                leading: const Icon(Icons.people),
-                title: const Text("Profil"),
+                leading: const Icon(Icons.person),
+                title: const Text("Compte"),
                 onTap: () {
                   //Navigator.pop(context);
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -289,12 +311,12 @@ class NavigationDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.help),
-              title: const Text("A propos de nous "),
+              leading: const Icon(Icons.history),
+              title: const Text("Historique"),
               onTap: () {
                 //Navigator.pop(context);
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const AproposDeNous()));
+                    builder: (context) => const HistoryPage()));
               },
             ),
             ListTile(
@@ -303,8 +325,8 @@ class NavigationDrawer extends StatelessWidget {
               onTap: () async {
                 await fAuth.signOut();
                 //Navigator.pop(context);
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const Connection()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => const Connection()));
               },
             ),
           ],
@@ -313,32 +335,32 @@ class NavigationDrawer extends StatelessWidget {
 
   Widget buildHeader(BuildContext context) => Material(
         color: Colors.black45,
-        child: InkWell(
-          onTap: () {
-            //Navigator.pop(context);
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => const ProfilePage()));
-          },
-          child: Container(
-            padding: EdgeInsets.only(
-              top: 24 + MediaQuery.of(context).padding.top,
-              bottom: 24,
-              left: 80,
-              right: 80,
-            ),
+        child: Container(
+          color: Colors.white,
+          padding: const EdgeInsets.only(left: 16, top: 35, right: 16),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => const ProfilePage()));
+            },
             child: Column(
               children: const [
                 CircleAvatar(
                   radius: 80,
-                  backgroundImage: AssetImage('images/icons8-driver-64.png'),
-                  backgroundColor: Colors.black45,
+                  backgroundColor: Colors.yellow,
+                  child: CircleAvatar(
+                    radius: 78,
+                    backgroundImage: AssetImage(
+                      "images/brms.jpg",
+                    ),
+                  ),
                 ),
                 SizedBox(height: 12.0),
                 Text(
                   "Chauffeur",
                   style: TextStyle(color: Colors.black54),
                 ),
-                Text('brms@gmail.com', style: TextStyle(color: Colors.white)),
+                Text('brms@gmail.com', style: TextStyle(color: Colors.black)),
               ],
             ),
           ),

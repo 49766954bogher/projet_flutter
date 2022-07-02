@@ -18,15 +18,8 @@ class _PageReglageState extends State<PageReglage> {
         title: const Text("Parametre"),
         backgroundColor: Colors.black54,
         elevation: 1,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => const HomePage()));
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
+        leading: const BackButton(
+          color: Colors.white,
         ),
       ),
       body: Container(
