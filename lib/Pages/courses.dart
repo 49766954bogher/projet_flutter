@@ -35,7 +35,50 @@ class _MoncourseState extends State<Moncourse> {
         nom: 'salma',
         email: 'slma@gmail.com',
         destination: 'pk',
-        depart: 'arafat')
+        depart: 'arafat'),
+
+    const ListePassagers(
+        //salma
+
+        nom: 'Ckeikh',
+        email: 'cheikh@gmail.com',
+        destination: 'pk',
+        depart: 'arafat'),
+    const ListePassagers(
+        //salma
+
+        nom: 'salma',
+        email: 'slma@gmail.com',
+        destination: 'pk',
+        depart: 'arafat'),
+    const ListePassagers(
+        //salma
+
+        nom: 'Demba',
+        email: 'demba@gmail.com',
+        destination: 'pk',
+        depart: 'arafat'),
+    const ListePassagers(
+        //salma
+
+        nom: 'salma',
+        email: 'slma@gmail.com',
+        destination: 'pk',
+        depart: 'arafat'),
+    const ListePassagers(
+        //salma
+
+        nom: 'Baba',
+        email: 'baba@gmail.com',
+        destination: 'iscae ',
+        depart: 'ksar'),
+    const ListePassagers(
+        //salma
+
+        nom: 'Amadou',
+        email: 'amadou@gmail.com',
+        destination: 'barsra',
+        depart: 'bmd'),
   ];
 
   @override
@@ -43,7 +86,7 @@ class _MoncourseState extends State<Moncourse> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text("Mes  course"),
+        title: const Text("Historique de mes courses"),
         centerTitle: true,
         leading: const BackButton(
           color: Colors.black,
@@ -59,9 +102,13 @@ class _MoncourseState extends State<Moncourse> {
             elevation: 4.0,
             child: ListTile(
               leading: CircleAvatar(
-                child: Text(client.nom[0],
-                    style:
-                        const TextStyle(fontSize: 20, color: Colors.black54)),
+                child: Text(
+                  client.nom[0],
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.black54,
+                  ),
+                ),
                 radius: 18,
               ),
               title: Text(client.nom),
