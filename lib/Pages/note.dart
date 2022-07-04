@@ -14,11 +14,9 @@ class _NotePageState extends State<NotePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Historique des notes  ",
-          style: TextStyle(fontSize: 12),
-        ),
+        scrolledUnderElevation: 1,
         backgroundColor: Colors.black54,
+        elevation: 1,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,

@@ -21,8 +21,9 @@ void main() async {
           primarySwatch: Colors.blue,
         ),
         home: AnimatedSplashScreen(
-          backgroundColor: Colors.black,
-          splash: 'images/driver.jpg',
+          backgroundColor: Colors.white,
+          splash: 'images/logo.png',
+          splashIconSize: 200,
           nextScreen: FirebaseAuth.instance.currentUser == null
               ? const Connection()
               : const HomePage(),

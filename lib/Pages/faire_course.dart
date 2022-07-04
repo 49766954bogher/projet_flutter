@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:taxido/Pages/accueil.dart';
 
-import 'infoscourses.dart';
+import 'accueil.dart';
 
-class _MoncourseState extends State<Moncourse> {
+class FaireCourse extends StatefulWidget {
+  const FaireCourse({Key? key}) : super(key: key);
+
+  @override
+  State<FaireCourse> createState() => _FaireCourseState();
+}
+
+class _FaireCourseState extends State<FaireCourse>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
   final List<ListePassagers> passagers = [
     const ListePassagers(
         //ibrhima
 
-        nom: 'ibrahima',
+        nom: 'Ibrahima',
         email: 'ibrahidiallo300@gmail.com',
         destination: 'ksar',
         depart: 'bmd'),
@@ -18,7 +25,7 @@ class _MoncourseState extends State<Moncourse> {
     const ListePassagers(
         //Chouaib
 
-        nom: 'chouaib',
+        nom: 'Chouaib',
         email: 'chouaib@gmail.com',
         destination: 'arafat',
         depart: '24'),
@@ -34,54 +41,23 @@ class _MoncourseState extends State<Moncourse> {
     const ListePassagers(
         //salma
 
-        nom: 'salma',
+        nom: 'Salma',
         email: 'slma@gmail.com',
         destination: 'pk',
         depart: 'arafat'),
-
-    const ListePassagers(
-        //salma
-
-        nom: 'Ckeikh',
-        email: 'amadou@gmail.com',
-        destination: 'pk',
-        depart: 'arafat'),
-    const ListePassagers(
-        //salma
-
-        nom: 'salma',
-        email: 'slma@gmail.com',
-        destination: 'pk',
-        depart: 'arafat'),
-    const ListePassagers(
-        //salma
-
-        nom: 'Demba',
-        email: 'demba@gmail.com',
-        destination: 'pk',
-        depart: 'arafat'),
-    const ListePassagers(
-        //salma
-
-        nom: 'salma',
-        email: 'slma@gmail.com',
-        destination: 'pk',
-        depart: 'arafat'),
-    const ListePassagers(
-        //salma
-
-        nom: 'Baba',
-        email: 'baba@gmail.com',
-        destination: 'iscae ',
-        depart: 'ksar'),
-    const ListePassagers(
-        //salma
-
-        nom: 'Amadou',
-        email: 'amadou@gmail.com',
-        destination: 'barsra',
-        depart: 'bmd'),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,25 +85,32 @@ class _MoncourseState extends State<Moncourse> {
           return Card(
             margin: const EdgeInsets.all(8.0),
             // padding:const EdgeInsets.all(5.0),
-            elevation: 4.0,
+            elevation: 2.0,
             child: ListTile(
               leading: CircleAvatar(
+                backgroundColor: Colors.yellowAccent,
                 child: Text(
                   client.nom[0],
                   style: const TextStyle(
                     fontSize: 20,
-                    color: Colors.black54,
+                    color: Colors.black,
                   ),
                 ),
-                radius: 18,
+                radius: 25,
               ),
               title: Text(client.nom),
               subtitle: Text(client.email),
-              trailing: const Icon(Icons.arrow_forward),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => infosClient(client: client)));
-              },
+              trailing: DropdownButton(
+                  value: dropdownvalue,
+                  icon: const Icon(Icons.keyboard_arrow_down),
+                  items: items.map((items) {
+                    return DropdownMenuItem(value: items, child: Text(items));
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdownvalue = newValue;
+                    });
+                  }),
             ),
           );
         }),
@@ -149,9 +132,6 @@ class ListePassagers {
       required this.depart});
 }
 
-class Moncourse extends StatefulWidget {
-  const Moncourse({Key? key}) : super(key: key);
+String? dropdownvalue = 'Accepter';
 
-  @override
-  State<Moncourse> createState() => _MoncourseState();
-}
+var items = ['Accepter', 'Refuser'];

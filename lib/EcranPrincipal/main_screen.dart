@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taxido/Pages/accueil.dart';
 import 'package:taxido/Pages/note.dart';
-import 'package:taxido/Pages/paiement.dart';
 import 'package:taxido/Pages/profile.dart';
 
 class MainScreen extends StatefulWidget {
@@ -35,7 +34,7 @@ class _MainScreenState extends State<MainScreen>
       body: TabBarView(
         physics: const NeverScrollableScrollPhysics(),
         controller: tabController,
-        children: const [HomePage(), PaiementPage(), NotePage(), ProfilePage()],
+        children: const [HomePage(), NotePage(), ProfilePage()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [

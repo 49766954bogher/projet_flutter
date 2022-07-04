@@ -169,19 +169,21 @@ class _SignUpState extends State<SignUp> {
               ),
               const SizedBox(height: 10.0),
               ElevatedButton(
-               onPressed: () {
+                onPressed: () {
                   validationForm();
                   sauvegarderInfosChauffeur();
                   Fluttertoast.showToast(msg: "Compte bien crée");
-                  Navigator.push(context,
-                       MaterialPageRoute(builder: (c) => const DetailsVoiture()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (c) => const DetailsVoiture()));
                 },
-                 style: ElevatedButton.styleFrom(
+                style: ElevatedButton.styleFrom(
                   primary: Colors.yellow,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24.0),
+                  ),
                 ),
-                 ),
                 child: Container(
                   height: 50.0,
                   child: const Center(
@@ -195,12 +197,9 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
-
-
               ),
             ]),
           ),
-
           TextButton(
               onPressed: () {
                 Navigator.push(context,

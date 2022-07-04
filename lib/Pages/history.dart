@@ -10,10 +10,9 @@ class HistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Historiqu des voyages ",
-          style: TextStyle(fontSize: 12),
-        ),
+        scrolledUnderElevation: 1,
+        backgroundColor: Colors.black54,
+        elevation: 1,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -24,21 +23,8 @@ class HistoryPage extends StatelessWidget {
                 builder: (BuildContext context) => const HomePage()));
           },
         ),
-        actions: [
-          OutlinedButton.icon(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => const NotePage()));
-            },
-            label: const Text(""),
-            icon: const Icon(
-              Icons.star_outline_sharp,
-              color: Colors.white,
-            ),
-          ),
-        ],
-        backgroundColor: Colors.black54,
       ),
+      backgroundColor: Colors.black54,
       body: Container(),
     );
   }
