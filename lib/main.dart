@@ -2,12 +2,9 @@
 //import 'package:firebase_core/firebase_core.dart';
 // ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:taxido/Connection/connection.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:taxido/Pages/accueil.dart';
+import 'package:taxido/EcranDemarage/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,19 +13,11 @@ void main() async {
   runApp(
     MyApp(
       child: MaterialApp(
-        title: "Taxido",
+        title: "Taxi Service pour chauffeur",
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: AnimatedSplashScreen(
-          backgroundColor: Colors.white,
-          splash: 'images/logo.png',
-          splashIconSize: 200,
-          nextScreen: FirebaseAuth.instance.currentUser == null
-              ? const Connection()
-              : const HomePage(),
-          splashTransition: SplashTransition.scaleTransition,
-        ),
+        home: MySplashScreen(),
         debugShowCheckedModeBanner: false,
       ),
     ),

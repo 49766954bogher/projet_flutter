@@ -1,11 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:taxido/Connection/connection.dart';
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:taxido/Authrntification/auth.dart';
-import 'package:taxido/Connection/connection.dart';
-// ignore: unused_import
-import 'package:taxido/EcranPrincipal/main_screen.dart';
-import 'package:taxido/Global/global.dart';
+import '../Authrntification/authentification.dart';
+import '../Connection/connect.dart';
+import '../Global/global.dart';
+import '../Pages/accueil.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({Key? key}) : super(key: key);
@@ -16,22 +16,29 @@ class MySplashScreen extends StatefulWidget {
 
 class _MySplashScreenState extends State<MySplashScreen> {
   startTimer() {
-    Timer(const Duration(seconds: 3), () async {
+    Timer(const Duration(seconds: 8), () async {
+      //if (FirebaseAuth.instance.currentUser == null){
+      //     ? const Connection()
+      //   : const HomePage(),
+      //}
+
       if (fAuth.currentUser != null) {
         currentUser = fAuth.currentUser;
+
         Navigator.push(
-            context, MaterialPageRoute(builder: (c) => const MainScreen()));
+            context, MaterialPageRoute(builder: (c) => const HomePage()));
       } else {
-        Navigator.push(context, MaterialPageRoute(builder: (c) => SignUp()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (c) => const Connect()));
       }
 
-      Navigator.push(
-          context, MaterialPageRoute(builder: (c) => const Connection()));
+      //Navigator.push(
+      //  context, MaterialPageRoute(builder: (c) => const Authentification()));
     });
   }
 
   @override
-  // la ùethode qui sera premier a executer losque user est dans la home screen
+  // la methode qui sera premier a executer losque user est dans la home screen
   void initState() {
     super.initState();
     startTimer();
@@ -42,20 +49,33 @@ class _MySplashScreenState extends State<MySplashScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        color: Colors.black,
+        width: MediaQuery.of(context).size.width,
+        height: 250.0,
+        color: Colors.white,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("images/driver.jpg"),
-              const Text(
-                "taxido app",
-                style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.black,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.bold),
+              const Padding(padding: EdgeInsets.all(8.0)),
+              Image.asset(
+                "images/homeTaxi.png",
+                width: MediaQuery.of(context).size.width,
+                height: 350.0,
               ),
+              const SizedBox(height: 8.0),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    "Bienvenue",
+                    style: TextStyle(
+                        fontSize: 40,
+                        fontFamily: "bolt-regular",
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              )
             ],
           ),
         ),
