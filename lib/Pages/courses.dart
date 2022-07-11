@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:taxido/Pages/accueil.dart';
-
-import 'infoscourses.dart';
 
 class _MoncourseState extends State<Moncourse> {
   final List<ListePassagers> passagers = [
@@ -111,30 +108,33 @@ class _MoncourseState extends State<Moncourse> {
             // padding:const EdgeInsets.all(5.0),
             elevation: 4.0,
             child: ListTile(
-              leading: CircleAvatar(
-                child: Text(
-                  client.nom[0],
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black54,
+                leading: CircleAvatar(
+                  child: Text(
+                    client.nom[0],
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.black54,
+                    ),
                   ),
+                  radius: 18,
                 ),
-                radius: 18,
-              ),
-              title: Text(client.nom),
-              subtitle: Text(client.email),
-              trailing: const Icon(Icons.arrow_forward),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => infosClient(client: client)));
-              },
-            ),
+                title: Text(client.nom),
+                subtitle: Text(client.email),
+                trailing: buildItem(client.depart, client.destination)),
           );
         }),
       ),
     );
   }
 }
+
+Widget buildItem(start, end) => Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(start),
+        Text(end),
+      ],
+    );
 
 class ListePassagers {
   final String nom;

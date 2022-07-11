@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:taxido/Connection/connection.dart';
 import 'dart:async';
 
-import '../Authrntification/authentification.dart';
 import '../Connection/connect.dart';
 import '../Global/global.dart';
 import '../Pages/accueil.dart';

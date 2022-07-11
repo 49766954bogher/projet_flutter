@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../BoiteGialogue/dialogue.dart';
+import '../Connection/connect.dart';
 import '../Global/global.dart';
 
 class Authentification extends StatefulWidget {
@@ -133,7 +134,7 @@ class _AuthentificationState extends State<Authentification> {
               TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (c) => const Connecter()));
+                      MaterialPageRoute(builder: (c) => const Connect()));
                 },
                 child: const Center(
                   child: Text("Avez vous deja une compte, cliquer ici !",

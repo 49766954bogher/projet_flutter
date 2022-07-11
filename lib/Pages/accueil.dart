@@ -13,7 +13,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../Global/global.dart';
 import 'faire_course.dart';
-import 'history.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -242,6 +241,7 @@ class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Colors.black54,
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -254,7 +254,6 @@ class NavigationDrawer extends StatelessWidget {
   }
 
   Widget buildMenuItems(BuildContext context) => Container(
-        color: Colors.white,
         padding: const EdgeInsets.all(24),
         child: Wrap(
           runSpacing: 16,
@@ -289,7 +288,7 @@ class NavigationDrawer extends StatelessWidget {
               onTap: () {
                 //Navigator.pop(context);
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const Moncourse()));
+                    MaterialPageRoute(builder: (context) => FaireCourse()));
               },
             ),
             ListTile(
@@ -309,7 +308,6 @@ class NavigationDrawer extends StatelessWidget {
   Widget buildHeader(BuildContext context) => Material(
         color: Colors.black45,
         child: Container(
-          color: Colors.white,
           padding: const EdgeInsets.only(left: 16, top: 35, right: 16),
           child: GestureDetector(
             onTap: () {

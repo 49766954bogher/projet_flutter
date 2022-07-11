@@ -45,6 +45,48 @@ class _FaireCourseState extends State<FaireCourse>
         email: 'slma@gmail.com',
         destination: 'pk',
         depart: 'arafat'),
+    const ListePassagers(
+        //salma
+
+        nom: 'Sidi',
+        email: 'sidi@gmail.com',
+        destination: 'basra',
+        depart: 'sabah'),
+    const ListePassagers(
+        //salma
+
+        nom: 'Oumar',
+        email: 'oumar@gmail.com',
+        destination: 'cardialogue',
+        depart: 'bmd'),
+    const ListePassagers(
+        //salma
+
+        nom: 'Salem',
+        email: 'salem@gmail.com',
+        destination: 'ksar',
+        depart: 'Fst'),
+    const ListePassagers(
+        //salma
+
+        nom: 'Souleymane',
+        email: 'souleymane@gmail.com',
+        destination: 'pk9',
+        depart: 'pk10'),
+    const ListePassagers(
+        //salma
+
+        nom: 'Moktar',
+        email: 'moktar@gmail.com',
+        destination: '  arafat',
+        depart: '5 eme'),
+    const ListePassagers(
+        //salma
+
+        nom: 'Abd-Rahim',
+        email: 'AbdRahim@gmail.com',
+        destination: 'poto 3',
+        depart: 'pk7'),
   ];
 
   @override
@@ -87,31 +129,20 @@ class _FaireCourseState extends State<FaireCourse>
             // padding:const EdgeInsets.all(5.0),
             elevation: 2.0,
             child: ListTile(
-              leading: CircleAvatar(
-                backgroundColor: Colors.yellowAccent,
-                child: Text(
-                  client.nom[0],
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
+                leading: CircleAvatar(
+                  backgroundColor: Colors.yellowAccent,
+                  child: Text(
+                    client.nom[0],
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
                   ),
+                  radius: 25,
                 ),
-                radius: 25,
-              ),
-              title: Text(client.nom),
-              subtitle: Text(client.email),
-              trailing: DropdownButton(
-                  value: dropdownvalue,
-                  icon: const Icon(Icons.keyboard_arrow_down),
-                  items: items.map((items) {
-                    return DropdownMenuItem(value: items, child: Text(items));
-                  }).toList(),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      dropdownvalue = newValue;
-                    });
-                  }),
-            ),
+                title: Text(client.nom),
+                subtitle: buildItems(client.depart, client.destination),
+                trailing: buildItem(Icons.delete, Icons.done)),
           );
         }),
       ),
@@ -132,6 +163,27 @@ class ListePassagers {
       required this.depart});
 }
 
-String? dropdownvalue = 'Accepter';
-
-var items = ['Accepter', 'Refuser'];
+Widget buildItems(start, end) => Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(start),
+        Text(end),
+      ],
+    );
+Widget buildItem(icon1, icon2) =>
+    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      IconButton(
+        onPressed: () {
+          print('ignored');
+        },
+        icon: icon1,
+        color: Colors.black54,
+      ),
+      IconButton(
+        onPressed: () {
+          print('accepted');
+        },
+        icon: icon2,
+        color: Colors.black54,
+      ),
+    ]);
